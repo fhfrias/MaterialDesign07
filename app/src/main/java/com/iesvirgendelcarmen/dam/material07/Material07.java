@@ -22,13 +22,16 @@ public class Material07 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_material07);
 
-        paginador = ()
 
         final TabLayout tabLayout = findViewById(R.id.tabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("PRIMERO").setIcon(android.R.drawable.sym_def_app_icon));
         tabLayout.addTab(tabLayout.newTab().setText("SEGUNDO").setIcon(android.R.drawable.sym_def_app_icon));
         tabLayout.addTab(tabLayout.newTab().setText("TERCERO").setIcon(android.R.drawable.sym_def_app_icon));
 
+        paginador = (ViewPager) findViewById(R.id.contenedor2);
+        Adaptador adaptador = new Adaptador(getSupportFragmentManager(), tabLayout.getTabCount());
+        paginador.setAdapter(adaptador);
+        paginador.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         //Escuchador
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
